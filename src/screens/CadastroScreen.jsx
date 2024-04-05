@@ -2,9 +2,10 @@ import { Button, TextInput, Text } from 'react-native-paper'
 import { View } from 'react-native'
 import { useState } from 'react'
 import style from '../config/style'
-import { createUserWithEmailAndPassword } from '../config/firebase'
-import { setDoc } from 'firebase/firestore'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
 import auth, { db } from '../config/firebase'
+import { setDoc, doc } from 'firebase/firestore'
+import { Image } from 'expo-image'
 
 export default function CadastroScreen({ navigation }) {
     const [nome, setNome] = useState('')
@@ -15,7 +16,7 @@ export default function CadastroScreen({ navigation }) {
         try{
             const usuario = await createUserWithEmailAndPassword(auth, email, senha)
             const uid = await usuario.user.uid
-            await setDoc(doc(db, 'usuarios', uid), {
+            await setDoc(doc(db, "usuarios", uid), {
                 nome: nome,
                 email: email
             })
@@ -26,12 +27,20 @@ export default function CadastroScreen({ navigation }) {
     }
     return(
         <View style={style.container}>
-            <Image
-                source={require('../../assets/cadastro.png')}
-                style={{ width: 200, height: 200, marginLeft: 50}}
-            />
             <View style={style.innerContainer}>
-                <Text variant='bodySmall'>
+                <Image
+                    source={require('../../assets/cadastro.png')}
+                    style={{ width: 100, height: 100, alignSelf: 'center'}}
+                />
+                <Text 
+                    variant='bodyLarge' 
+                    style={{
+                        fontSize: 20,
+                        alignSelf: 'center',
+                        color: 'white',
+                        fontFamily: 'Roboto'
+                    }}
+                >
                     Faça seu cadastro
                 </Text>
                 <TextInput
@@ -57,15 +66,22 @@ export default function CadastroScreen({ navigation }) {
                 />
                 <Button 
                     mode='outlined'
-                    style={style.button}
-                    onPress={() => {
-                        try{
-                            CadastrarUsuario()
-                            navigation.navigate("LoginScreen")
-                        }catch(error){
-                            console.error(error)
-                        }
+                    style={{
+                        marginRight: 95,
+                        marginTop: 10,
+                        maxWidth: 200,
+                        alignSelf: 'flex-end',
+                        backgroundColor: 'black',
                     }}
+                        onPress={() => {
+                            try{
+                                CadastrarUsuario()
+                                console.error('Usuário cadastrado')
+                                navigation.navigate("LoginScreen")
+                            }catch(error){
+                                console.error(error)
+                            }
+                        }}
                     >
                         Cadastrar
                     </Button>

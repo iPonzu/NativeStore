@@ -12,7 +12,7 @@ export default function AppNavigation() {
         <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen
-                    name="Login"
+                    name="LoginScreen"
                     component={LoginScreen}
                     options={{ 
                         title: "Login",
@@ -20,7 +20,7 @@ export default function AppNavigation() {
                     }}
                 />
                 <Stack.Screen
-                    name="Produtos"
+                    name="ProdutoScreen"
                     component={ProdutosScreen}
                     options={{
                         title: "Produtos",
@@ -28,7 +28,7 @@ export default function AppNavigation() {
                     }}
                 />
                 <Stack.Screen
-                    name="Recuperar Senha"
+                    name="RecuperarSenhaScreen"
                     component={RecuperarSenhaScreen}
                     options={{
                         title: "Recuperar Senha",
@@ -36,7 +36,7 @@ export default function AppNavigation() {
                     }}
                 />
                 <Stack.Screen
-                    name="Cadastro"
+                    name="CadastroScreen"
                     component={CadastroScreen}
                     options={{
                         title: "Cadastro",

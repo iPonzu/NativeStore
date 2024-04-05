@@ -16,13 +16,7 @@ const style = StyleSheet.create({
 
     },
     center: {
-        alignSelf: 'center'
-    },
-    button: {
-        marginTop: 10,
-        maxWidth: 260,
-        alignSelf: 'flex-end',
-        backgroundColor: 'black',
+        alignSelf: 'center',
         color: 'white'
     },
     input: {

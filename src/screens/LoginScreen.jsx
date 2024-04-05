@@ -2,7 +2,7 @@ import { View } from 'react-native'
 import { Button, Text, TextInput } from 'react-native-paper'
 import { useState } from 'react'
 import { Image } from 'expo-image'
-import { signInWithEmailAndPassword } from '../config/firebase'
+import { signInWithEmailAndPassword } from 'firebase/auth'
 import auth from '../config/firebase'
 import style from '../config/style'
 
@@ -11,18 +11,12 @@ export default function LoginScreen({ navigation }) {
     const [senha, setSenha] = useState('')
 
     const FazerLogin = async () => {
-        try{
-            const usuario = await signInWithEmailAndPassword(auth,email, senha)
-            console.log(usuario)
-            navigation.navigate('Home')
-        }catch(error){
-            if(error.code === 'auth/user-not-found'){
-                console.error('Usuário não encontrado')
-            }if(error.code === 'auth/invalid-credential'){
-                console.error('Credenciais incorretas')
-            }else{
-                console.error(error)
-            }
+        try {
+           const usuario = await signInWithEmailAndPassword(auth, email, senha) 
+           console.log(usuario)
+           navigation.navigate("ProdutoScreen")
+        } catch (error) {
+            console.error(error)
         }
     }
 
@@ -52,15 +46,40 @@ export default function LoginScreen({ navigation }) {
                     secureTextEntry
                     style={style.input}
                 />
-                <Button onPress={() => navigation.navigate('RecuperarSenhaScreen')}>
+                <Button 
+                    mode='outlined'
+                    style={{
+                        marginRight: 70,
+                        maxWidth: 200,
+                        alignSelf: 'flex-end',
+                        backgroundColor: 'black',
+                    }}
+                    onPress={() => navigation.navigate('RecuperarSenhaScreen')}
+                >
                     Recuperar senha
                 </Button>
-                <Button onPress={() => navigation.navigate('CadastroScreen')}>
+                <Button 
+                    mode='outlined'
+                    style={{
+                        marginRight: 67,
+                        marginTop: 3,
+                        maxWidth: 200,
+                        alignSelf: 'flex-end',
+                        backgroundColor: 'black',               
+                    }}
+                    onPress={() => navigation.navigate('CadastroScreen')}
+                >
                     Realizar cadastro
                 </Button>
                 <Button
                     mode='outlined'
-                    style={style.button}
+                    style={{
+                        marginTop: 10,
+                        maxWidth: 260,
+                        alignSelf: 'flex-end',
+                        backgroundColor: 'black',
+                        textDecorationColor: 'white'
+                    }}
                     onPress={FazerLogin}
                 >
                     Entrar

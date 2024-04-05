@@ -1,8 +1,10 @@
 import { View } from 'react-native'
 import { Button, Text, TextInput } from 'react-native-paper'
 import { useState } from 'react'
+import { Image } from 'expo-image'
 import { signInWithEmailAndPassword } from '../config/firebase'
 import auth from '../config/firebase'
+import style from '../config/style'
 
 export default function LoginScreen({ navigation }) {
     const [email, setEmail] = useState('')
@@ -29,12 +31,12 @@ export default function LoginScreen({ navigation }) {
             <View style={style.innerContainer}>
                 <Image
                     source={require('../../assets/pizza-icon.png')}
-                    style={{ width: 200, height: 200, marginLeft: 50}}
+                    style={{ width: 200, height: 200, marginLeft: 60}}
                 />
-                <Text variant='headlineLarge' style={style.Center}>
+                <Text variant='headlineLarge' style={style.center}>
                     8Pizza Store 
                 </Text>
-                <Text vauriant='headlineSmall' style={style.Center}>
+                <Text vauriant='headlineSmall' style={style.center}>
                     Realize seu login
                 </Text>
                 <TextInput
@@ -58,9 +60,11 @@ export default function LoginScreen({ navigation }) {
                 </Button>
                 <Button
                     mode='outlined'
-                    style={style.button} //TODO >>  marginTop: 10, maxWidth: 260, alignSelf: 'flex-end' <<
+                    style={style.button}
                     onPress={FazerLogin}
-                />
+                >
+                    Entrar
+                </Button>
             </View>
         </View>
     )

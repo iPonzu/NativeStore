@@ -4,6 +4,7 @@ import { useState } from 'react'
 import style from '../config/style'
 import { createUserWithEmailAndPassword } from '../config/firebase'
 import { setDoc } from 'firebase/firestore'
+import auth, { db } from '../config/firebase'
 
 export default function CadastroScreen({ navigation }) {
     const [nome, setNome] = useState('')

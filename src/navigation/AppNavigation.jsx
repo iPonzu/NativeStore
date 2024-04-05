@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import LoginScreen from "../screens/LoginScreen";
 import CadastroScreen from "../screens/CadastroScreen";
 import RecuperarSenhaScreen from "../screens/RecuperarSenhaScreen";
-import ProdutosScreen from "../screens/ProdutosScreen";
+import ProdutosScreen from "../screens/ProdutoScreen";
 
 const Stack = createNativeStackNavigator();
 
